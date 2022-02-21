@@ -1,0 +1,53 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: SperaxL1
+    network: mainnet
+    source:
+      address: "0xb4a3b0faf0ab53df58001804dda5bfc6a3d59008"
+      abi: SperaxL1
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - AllowTransfer
+        - Approval
+        - BlockTransfer
+        - MintPaused
+        - MintUnpaused
+        - Mintable
+        - OwnershipTransferred
+        - Paused
+        - Transfer
+        - Unmintable
+        - Unpaused
+      abis:
+        - name: SperaxL1
+          file: ./abis/SperaxL1.json
+      eventHandlers:
+        - event: AllowTransfer(indexed address)
+          handler: handleAllowTransfer
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: BlockTransfer(indexed address)
+          handler: handleBlockTransfer
+        - event: MintPaused(address)
+          handler: handleMintPaused
+        - event: MintUnpaused(address)
+          handler: handleMintUnpaused
+        - event: Mintable(address)
+          handler: handleMintable
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Paused(address)
+          handler: handlePaused
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+        - event: Unmintable(address)
+          handler: handleUnmintable
+        - event: Unpaused(address)
+          handler: handleUnpaused
+      file: ./src/mapping.ts
