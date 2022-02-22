@@ -1,5 +1,67 @@
-type ExampleEntity @entity {
+type spaL1TransferEvent @entity {
   id: ID!
+  from: Bytes!
+  to: Bytes!
+  value: BigDecimal!
+  totalSupply: BigDecimal!
   count: BigInt!
-  account: Bytes! # address
+  vestingReward: BigDecimal!
+  gasPrice: BigInt!
+  gasUsed: BigInt!
+  timeStamp: String!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+
+type wspaL1TransferEvent @entity {
+  id: ID!
+  from: Bytes!
+  to: Bytes!
+  value: BigDecimal!
+  totalSupply: BigDecimal!
+  arbitrumLockedBridgeBlance: BigDecimal!
+  count: BigInt!
+  vestingReward: BigDecimal!
+  gasPrice: BigInt!
+  gasUsed: BigInt!
+  timeStamp: String!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+type spaL1Balance @entity {
+  id: ID!
+  wSpaBalance: wSpaBalanceEvent
+  bootstrapLiquidity:BigDecimal!
+  bootstrapLiquidityDeployer:BigDecimal!
+  privateSale:BigDecimal!
+  teamAdvisor:BigDecimal!
+  SperaxFoundation:BigDecimal!
+  StakingRewards:BigDecimal!
+  treasury:BigDecimal!
+  teamAdvisor2:BigDecimal!
+  timeStamp: String!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+
+type spaL1TotalSupplyEvent @entity {
+  id: ID!
+  value: BigDecimal!
+  timeStamp: String!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+type wSpaTotalSupplyEvent @entity {
+  id: ID!
+  value: BigDecimal!
+  timeStamp: String!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+type wSpaBalanceEvent @entity {
+  id: ID!
+  arbitrumLockedBridgeBlance: BigDecimal!
+  timeStamp: String!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
 }

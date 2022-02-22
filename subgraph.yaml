@@ -1,4 +1,4 @@
-specVersion: 0.0.1
+specVersion: 0.0.2
 schema:
   file: ./schema.graphql
 dataSources:
@@ -8,6 +8,7 @@ dataSources:
     source:
       address: "0xb4a3b0faf0ab53df58001804dda5bfc6a3d59008"
       abi: SperaxL1
+      startBlock: 13114326
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -50,4 +51,36 @@ dataSources:
           handler: handleUnmintable
         - event: Unpaused(address)
           handler: handleUnpaused
-      file: ./src/mapping.ts
+      file: ./src/SpaL1Mapping.ts
+  - kind: ethereum
+    name: L1Wspa
+    network: mainnet
+    source:
+      address: "0x2a95FE4c7e64e09856989F9eA0b57B9AB5f770CB"
+      abi: L1Wspa
+      startBlock: 13826479
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ArbitrumGatewayRouterChanged
+        - OwnershipTransferred
+        - SPAaddressUpdated
+        - Transfer
+      abis:
+        - name: L1Wspa
+          file: ./abis/L1Wspa.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: ArbitrumGatewayRouterChanged(address,address)
+          handler: handleArbitrumGatewayRouterChanged
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: SPAaddressUpdated(address,address)
+          handler: handleSPAaddressUpdated
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/WspaL1Mapping.ts

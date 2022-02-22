@@ -1,13 +1,13 @@
 {
-  "name": "SperaxL1Subgraph",
+  "name": "spa-ethereum-l1",
   "license": "UNLICENSED",
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ Sperax/SperaxL1Subgraph",
-    "create-local": "graph create --node http://localhost:8020/ Sperax/SperaxL1Subgraph",
-    "remove-local": "graph remove --node http://localhost:8020/ Sperax/SperaxL1Subgraph",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 Sperax/SperaxL1Subgraph"
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ sperax/spa-ethereum-l1",
+    "create-local": "graph create --node http://localhost:8020/ sperax/spa-ethereum-l1",
+    "remove-local": "graph remove --node http://localhost:8020/ sperax/spa-ethereum-l1",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 sperax/spa-ethereum-l1"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.26.0",
