@@ -42,7 +42,7 @@ export function handleTransfer(event: Transfer): void {
   if (erc20TotalSupply.reverted) {
     log.warning("TotalSupply Revert", []);
   } else {
-    spaL1TotalSupply.value = erc20TotalSupply.value
+    spaL1TotalSupply.spaL1TotalSupply = erc20TotalSupply.value
       .toBigDecimal()
       .div(BigDecimal.fromString("1000000000000000000"));
   }

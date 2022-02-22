@@ -485,7 +485,7 @@ export class spaL1TotalSupplyEvent extends Entity {
     super();
     this.set("id", Value.fromString(id));
 
-    this.set("value", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("spaL1TotalSupply", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("timeStamp", Value.fromString(""));
     this.set("blockNumber", Value.fromBigInt(BigInt.zero()));
     this.set("transactionHash", Value.fromBytes(Bytes.empty()));
@@ -522,13 +522,13 @@ export class spaL1TotalSupplyEvent extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get value(): BigDecimal {
-    let value = this.get("value");
+  get spaL1TotalSupply(): BigDecimal {
+    let value = this.get("spaL1TotalSupply");
     return value!.toBigDecimal();
   }
 
-  set value(value: BigDecimal) {
-    this.set("value", Value.fromBigDecimal(value));
+  set spaL1TotalSupply(value: BigDecimal) {
+    this.set("spaL1TotalSupply", Value.fromBigDecimal(value));
   }
 
   get timeStamp(): string {
@@ -564,7 +564,7 @@ export class wSpaTotalSupplyEvent extends Entity {
     super();
     this.set("id", Value.fromString(id));
 
-    this.set("value", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("wSpaTotalSupply", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("timeStamp", Value.fromString(""));
     this.set("blockNumber", Value.fromBigInt(BigInt.zero()));
     this.set("transactionHash", Value.fromBytes(Bytes.empty()));
@@ -598,13 +598,13 @@ export class wSpaTotalSupplyEvent extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get value(): BigDecimal {
-    let value = this.get("value");
+  get wSpaTotalSupply(): BigDecimal {
+    let value = this.get("wSpaTotalSupply");
     return value!.toBigDecimal();
   }
 
-  set value(value: BigDecimal) {
-    this.set("value", Value.fromBigDecimal(value));
+  set wSpaTotalSupply(value: BigDecimal) {
+    this.set("wSpaTotalSupply", Value.fromBigDecimal(value));
   }
 
   get timeStamp(): string {

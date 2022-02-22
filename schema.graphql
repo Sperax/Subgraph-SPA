@@ -46,14 +46,14 @@ type spaL1Balance @entity {
 
 type spaL1TotalSupplyEvent @entity {
   id: ID!
-  value: BigDecimal!
+  spaL1TotalSupply: BigDecimal!
   timeStamp: String!
   blockNumber: BigInt!
   transactionHash: Bytes!
 }
 type wSpaTotalSupplyEvent @entity {
   id: ID!
-  value: BigDecimal!
+  wSpaTotalSupply: BigDecimal!
   timeStamp: String!
   blockNumber: BigInt!
   transactionHash: Bytes!
