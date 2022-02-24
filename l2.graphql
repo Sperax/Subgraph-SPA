@@ -1,0 +1,32 @@
+#-----------------------SPERAX-TOKEN-L2-TRANSACTIONS---------------------------------------------------------
+type spaL2TransferEvent @entity {
+  id: ID!
+  from: Bytes!
+  to: Bytes!
+  value: BigDecimal!
+  totalSupply: BigDecimal!
+  count: BigInt!
+  vestingReward: BigDecimal!
+  gasPrice: BigInt!
+  gasUsed: BigInt!
+  timeStamp: String!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+
+type spaL2Balance @entity {
+  id: ID!
+  bootstrapLiquidityDeployer: BigDecimal!
+  usdsUsdcFarmRewarder: BigDecimal!
+  usdsUsdcFarmVesting: BigDecimal!
+  spaUsdsFarmRewarder1: BigDecimal!
+  spaUsdsFarmVesting1: BigDecimal!
+  spaUsdsFarmRewarder2: BigDecimal!
+  spaUsdsFarmVesting2: BigDecimal!
+  spaReserveL2MultiSig: BigDecimal!
+  spaFarm: BigDecimal!
+  spaFarmRewarder: BigDecimal!
+  timeStamp: String!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
