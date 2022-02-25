@@ -10,10 +10,10 @@
     "deploy-local-l1": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 sperax/spa-ethereum-l1 spaL1Subgraph.yaml",
     "codegen-l2": "graph codegen spaL2Subgraph.yaml",
     "build-l2": "graph build spaL2Subgraph.yaml",
-    "deploy-l2": "graph deploy --node https://api.thegraph.com/deploy/ bayou020/spa-l2 spaL2Subgraph.yaml spaL2Subgraph.yaml ",
-    "create-local-l2": "graph create  --node http://localhost:8020/ bayou020/spa-l2 spaL2Subgraph.yaml ",
-    "remove-local-l2": "graph remove  --node http://localhost:8020/ bayou020/spa-l2 spaL2Subgraph.yaml ",
-    "deploy-local-l2": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 bayou020/spa-l2 spaL2Subgraph.yaml "
+    "deploy-l2": "graph deploy --node https://api.thegraph.com/deploy/ sperax/spa-arbitrum-l2 spaL2Subgraph.yaml spaL2Subgraph.yaml ",
+    "create-local-l2": "graph create  --node http://localhost:8020/ sperax/spa-arbitrum-l2 spaL2Subgraph.yaml ",
+    "remove-local-l2": "graph remove  --node http://localhost:8020/ sperax/spa-arbitrum-l2 spaL2Subgraph.yaml ",
+    "deploy-local-l2": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 sperax/spa-arbitrum-l2 spaL2Subgraph.yaml "
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.26.0",

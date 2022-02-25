@@ -26,6 +26,7 @@ type spaL2Balance @entity {
   spaReserveL2MultiSig: BigDecimal!
   spaFarm: BigDecimal!
   spaFarmRewarder: BigDecimal!
+  totalBalances:BigDecimal!
   timeStamp: String!
   blockNumber: BigInt!
   transactionHash: Bytes!

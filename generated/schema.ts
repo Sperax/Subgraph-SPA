@@ -175,6 +175,7 @@ export class spaL2Balance extends Entity {
     this.set("spaReserveL2MultiSig", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("spaFarm", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("spaFarmRewarder", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("totalBalances", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("timeStamp", Value.fromString(""));
     this.set("blockNumber", Value.fromBigInt(BigInt.zero()));
     this.set("transactionHash", Value.fromBytes(Bytes.empty()));
@@ -294,6 +295,15 @@ export class spaL2Balance extends Entity {
 
   set spaFarmRewarder(value: BigDecimal) {
     this.set("spaFarmRewarder", Value.fromBigDecimal(value));
+  }
+
+  get totalBalances(): BigDecimal {
+    let value = this.get("totalBalances");
+    return value!.toBigDecimal();
+  }
+
+  set totalBalances(value: BigDecimal) {
+    this.set("totalBalances", Value.fromBigDecimal(value));
   }
 
   get timeStamp(): string {

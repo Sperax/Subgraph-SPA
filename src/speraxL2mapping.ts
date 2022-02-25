@@ -10,10 +10,7 @@ import { SperaxL2, Approval, Transfer } from "../generated/SperaxL2/SperaxL2";
 //   SperaxL2Balances,
 //   Transfer as transferBalances,
 // } from "../generated/SperaxL2Balances/SperaxL2Balances";
-import {
-  spaL2TransferEvent,
-  spaL2Balance,
-} from "../generated/schema";
+import { spaL2TransferEvent, spaL2Balance } from "../generated/schema";
 import {
   timestampConvertDate,
   digitsConvert,
@@ -22,9 +19,17 @@ import {
 
 export function handleTransfer(event: Transfer): void {
   let entity = new spaL2TransferEvent(
-    event.transaction.from.toHex().concat("_").concat(event.params.to.toHex().concat("_").concat(event.transaction.hash.toHex()))
+    event.transaction.from
+      .toHex()
+      .concat("_")
+      .concat(
+        event.params.to
+          .toHex()
+          .concat("_")
+          .concat(event.transaction.hash.toHex())
+      )
   );
-    let balance = new spaL2Balance(
+  let balance = new spaL2Balance(
     event.transaction.from.toHex().concat("_").concat(event.params.to.toHex())
   );
 
@@ -74,18 +79,18 @@ export function handleTransfer(event: Transfer): void {
     "0xC0F0484a216AfF20E0ead1a1513cE40fe0AFe0fe"
   );
 
-  // 7- SPA-Reserve-L2 multi-sig
+  // 8- SPA-Reserve-L2 multi-sig
 
   balance.spaReserveL2MultiSig = spaL2BalanceCheck(
     erc20,
     "0xb56e5620A79cfe59aF7c0FcaE95aADbEA8ac32A1"
   );
-  // 8- SPA Farm
+  // 9- SPA Farm
   balance.spaFarm = spaL2BalanceCheck(
     erc20,
     "0xc150cbdDC5932258fAc768bEB4d2352D127039fd"
   );
-  // 9- SPA Farm Rewarder
+  // 10- SPA Farm Rewarder
   balance.spaFarmRewarder = spaL2BalanceCheck(
     erc20,
     "0x852afF031bb282C054B26628A799D7F3a896873e"
@@ -99,6 +104,16 @@ export function handleTransfer(event: Transfer): void {
       .div(BigDecimal.fromString("1000000000000000000"));
   }
 
+  balance.totalBalances = balance.bootstrapLiquidityDeployer
+    .plus(balance.usdsUsdcFarmRewarder)
+    .plus(balance.usdsUsdcFarmVesting)
+    .plus(balance.spaUsdsFarmRewarder1)
+    .plus(balance.spaUsdsFarmVesting1)
+    .plus(balance.spaUsdsFarmRewarder2)
+    .plus(balance.spaUsdsFarmVesting2)
+    .plus(balance.spaReserveL2MultiSig)
+    .plus(balance.spaFarmRewarder)
+    .plus(balance.spaFarm);
   // Balances Entities
   balance.timeStamp = timestampConvertDate(event.block.timestamp);
   balance.blockNumber = event.block.number;
@@ -113,7 +128,6 @@ export function handleTransfer(event: Transfer): void {
   entity.transactionHash = event.transaction.hash;
   entity.gasPrice = event.transaction.gasPrice;
   entity.gasUsed = event.block.gasUsed;
-
 
   entity.save();
 }
