@@ -21,7 +21,7 @@ import {
   spaL1TotalSupplyEvent,
 } from "../generated/schema";
 
-import { timestampConvertDate } from "../src/utilis/utils";
+import { timestampConvertDate, spaL1BalanceCheck } from "../src/utilis/utils";
 
 export function handleTransfer(event: Transfer): void {
   // Initialize Entities
@@ -48,100 +48,61 @@ export function handleTransfer(event: Transfer): void {
   }
   // Calculate SPA Balances
   // 1- Bootstrap Liquidity
-  let bootstrapLiquidity = erc20.try_balanceOf(
-    Address.fromString("0x8B65CE3b4Eaa8958346096C3a9303b73f2012aCc")
+
+  balance.bootstrapLiquidity = spaL1BalanceCheck(
+    erc20,
+    "0x8B65CE3b4Eaa8958346096C3a9303b73f2012aCc"
   );
-  if (bootstrapLiquidity.reverted) {
-    log.warning("balance L1 SPA Revert", []);
-  } else {
-    balance.bootstrapLiquidity = bootstrapLiquidity.value
-      .toBigDecimal()
-      .div(BigDecimal.fromString("1000000000000000000"));
-  }
 
   // 2- Bootstrap Liquidity Deployer
 
-  let bootstrapLiquidityDeployer = erc20.try_balanceOf(
-    Address.fromString("0xc28c6970D8A345988e8335b1C229dEA3c802e0a6")
+  balance.bootstrapLiquidityDeployer = spaL1BalanceCheck(
+    erc20,
+    "0xc28c6970D8A345988e8335b1C229dEA3c802e0a6"
   );
-  if (bootstrapLiquidityDeployer.reverted) {
-    log.warning("balance L1 SPA Revert", []);
-  } else {
-    balance.bootstrapLiquidityDeployer = bootstrapLiquidityDeployer.value
-      .toBigDecimal()
-      .div(BigDecimal.fromString("1000000000000000000"));
-  }
-
   // 3 Private Sale
-
-  let privateSale = erc20.try_balanceOf(
-    Address.fromString("0x2Fc8d8BCf4b2c0fc6594475E44c473AC3E844B6a")
+  balance.privateSale = spaL1BalanceCheck(
+    erc20,
+    "0x2Fc8d8BCf4b2c0fc6594475E44c473AC3E844B6a"
   );
-  if (privateSale.reverted) {
-    log.warning("balance L1 SPA Revert", []);
-  } else {
-    balance.privateSale = privateSale.value
-      .toBigDecimal()
-      .div(BigDecimal.fromString("1000000000000000000"));
-  }
   // 4 Team & Advisor
-  let teamAdvisor = erc20.try_balanceOf(
-    Address.fromString("0x483fE01ED80aB597e7941B5C925739A396555d27")
-  );
-  if (teamAdvisor.reverted) {
-    log.warning("balance L1 SPA Revert", []);
-  } else {
-    balance.teamAdvisor = teamAdvisor.value
-      .toBigDecimal()
-      .div(BigDecimal.fromString("1000000000000000000"));
-  }
 
+  balance.teamAdvisor = spaL1BalanceCheck(
+    erc20,
+    "0x483fE01ED80aB597e7941B5C925739A396555d27"
+  );
   // 5 Sperax Foundation
-
-  let SperaxFoundation = erc20.try_balanceOf(
-    Address.fromString("0xD95791bcab484C0552833cB558d18d4D3F198AF9")
+  balance.SperaxFoundation = spaL1BalanceCheck(
+    erc20,
+    "0xD95791bcab484C0552833cB558d18d4D3F198AF9"
   );
-  if (SperaxFoundation.reverted) {
-    log.warning("balance L1 SPA Revert", []);
-  } else {
-    balance.SperaxFoundation = SperaxFoundation.value
-      .toBigDecimal()
-      .div(BigDecimal.fromString("1000000000000000000"));
-  }
   // 6 Staking Rewards
-  let StakingRewards = erc20.try_balanceOf(
-    Address.fromString("0xCD1B1ce6ce877a9315E73E2E4Ba3137228068A59")
+  balance.StakingRewards = spaL1BalanceCheck(
+    erc20,
+    "0xCD1B1ce6ce877a9315E73E2E4Ba3137228068A59"
   );
-  if (StakingRewards.reverted) {
-    log.warning("balance L1 SPA Revert", []);
-  } else {
-    balance.StakingRewards = StakingRewards.value
-      .toBigDecimal()
-      .div(BigDecimal.fromString("1000000000000000000"));
-  }
-
   // 7 Treasury
-  let treasury = erc20.try_balanceOf(
-    Address.fromString("0x4a692fD139259a5b94Cad7753E3C96350b7F2B9f")
+  balance.treasury = spaL1BalanceCheck(
+    erc20,
+    "0x4a692fD139259a5b94Cad7753E3C96350b7F2B9f"
   );
-  if (treasury.reverted) {
-    log.warning("balance L1 SPA Revert", []);
-  } else {
-    balance.treasury = treasury.value
-      .toBigDecimal()
-      .div(BigDecimal.fromString("1000000000000000000"));
-  }
   // 8 Team & Advisor2
-  let teamAdvisor2 = erc20.try_balanceOf(
-    Address.fromString("0xd6D462c58D09bff7f8ec49A995B38eA89C9c5402")
+
+  balance.teamAdvisor2 = spaL1BalanceCheck(
+    erc20,
+    "0xd6D462c58D09bff7f8ec49A995B38eA89C9c5402"
   );
-  if (teamAdvisor2.reverted) {
-    log.warning("balance L1 SPA Revert", []);
-  } else {
-    balance.teamAdvisor2 = teamAdvisor2.value
-      .toBigDecimal()
-      .div(BigDecimal.fromString("1000000000000000000"));
-  }
+    balance.totalBalancesL1=balance.bootstrapLiquidityDeployer
+    .plus(balance.bootstrapLiquidity)
+    .plus(balance.privateSale)
+    .plus(balance.teamAdvisor)
+    .plus(balance.SperaxFoundation)
+    .plus(balance.StakingRewards)
+    .plus(balance.treasury)
+    .plus(balance.teamAdvisor2)
+  
+
+
 
   //Transfer Entities
   transfer.from = event.params.from;
@@ -149,7 +110,6 @@ export function handleTransfer(event: Transfer): void {
   transfer.value = event.params.value
     .toBigDecimal()
     .div(BigDecimal.fromString("1000000000000000000"));
-  transfer.count = transfer.count.plus(BigInt.fromI32(1));
   transfer.timeStamp = timestampConvertDate(event.block.timestamp);
   transfer.blockNumber = event.block.number;
   transfer.transactionHash = event.transaction.hash;
@@ -160,7 +120,6 @@ export function handleTransfer(event: Transfer): void {
   spaL1TotalSupply.timeStamp = timestampConvertDate(event.block.timestamp);
   spaL1TotalSupply.blockNumber = event.block.number;
   spaL1TotalSupply.transactionHash = event.transaction.hash;
-
 
   // Balances Entities
 

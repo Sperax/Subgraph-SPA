@@ -4,8 +4,6 @@ type spaL1TransferEvent @entity {
   to: Bytes!
   value: BigDecimal!
   totalSupply: BigDecimal!
-  count: BigInt!
-  vestingReward: BigDecimal!
   gasPrice: BigInt!
   gasUsed: BigInt!
   timeStamp: String!
@@ -20,8 +18,6 @@ type wspaL1TransferEvent @entity {
   value: BigDecimal!
   totalSupply: BigDecimal!
   arbitrumLockedBridgeBlance: BigDecimal!
-  count: BigInt!
-  vestingReward: BigDecimal!
   gasPrice: BigInt!
   gasUsed: BigInt!
   timeStamp: String!
@@ -39,6 +35,7 @@ type spaL1Balance @entity {
   StakingRewards:BigDecimal!
   treasury:BigDecimal!
   teamAdvisor2:BigDecimal!
+  totalBalancesL1:BigDecimal!
   timeStamp: String!
   blockNumber: BigInt!
   transactionHash: Bytes!

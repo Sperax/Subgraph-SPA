@@ -58,7 +58,7 @@ export function handleTransfer(event: Transfer): void {
   transfer.value = event.params.value
     .toBigDecimal()
     .div(BigDecimal.fromString("1000000000000000000"));
-  transfer.count = transfer.count.plus(BigInt.fromI32(1));
+
   transfer.timeStamp = timestampConvertDate(event.block.timestamp);
   transfer.blockNumber = event.block.number;
   transfer.transactionHash = event.transaction.hash;

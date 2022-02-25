@@ -8,7 +8,7 @@ dataSources:
     source:
       address: "0x5575552988A3A80504bBaeB1311674fCFd40aD4B"
       abi: SperaxL2
-      startBlock: 6000000
+      startBlock: 5000000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
