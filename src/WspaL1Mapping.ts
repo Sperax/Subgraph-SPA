@@ -19,12 +19,32 @@ import { timestampConvertDate } from "../src/utilis/utils";
 export function handleTransfer(event: Transfer): void {
   // Initialize Entities
 
-  let transfer = new wspaL1TransferEvent(event.transaction.from.toHex());
+  let transfer = new wspaL1TransferEvent(
+    event.transaction.from
+      .toHex()
+      .concat("_")
+      .concat(
+        event.params.to
+          .toHex()
+          .concat("_")
+          .concat(event.transaction.hash.toHex())
+      )
+  );
 
   let wSpaTotalSupply = new wSpaTotalSupplyEvent(
     event.transaction.from.toHex()
   );
-  let wSpaBalance = new wSpaBalanceEvent(event.transaction.from.toHex());
+  let wSpaBalance = new wSpaBalanceEvent(
+    event.transaction.from
+      .toHex()
+      .concat("_")
+      .concat(
+        event.params.to
+          .toHex()
+          .concat("_")
+          .concat(event.transaction.hash.toHex())
+      )
+  );
   let erc20 = L1Wspa.bind(event.address);
 
   // Calculate wSPA Total Supply

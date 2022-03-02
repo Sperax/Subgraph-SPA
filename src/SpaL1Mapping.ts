@@ -26,10 +26,27 @@ import { timestampConvertDate, spaL1BalanceCheck } from "../src/utilis/utils";
 export function handleTransfer(event: Transfer): void {
   // Initialize Entities
 
-  let transfer = new spaL1TransferEvent(event.transaction.from.toHex());
-  let balance = new spaL1Balance(event.transaction.from.toHex());
-  let wSpaTotalSupply = new wSpaTotalSupplyEvent(
-    event.transaction.from.toHex()
+  let transfer = new spaL1TransferEvent(
+    event.transaction.from
+      .toHex()
+      .concat("_")
+      .concat(
+        event.params.to
+          .toHex()
+          .concat("_")
+          .concat(event.transaction.hash.toHex())
+      )
+  );
+  let balance = new spaL1Balance(
+    event.transaction.from
+      .toHex()
+      .concat("_")
+      .concat(
+        event.params.to
+          .toHex()
+          .concat("_")
+          .concat(event.transaction.hash.toHex())
+      )
   );
   let spaL1TotalSupply = new spaL1TotalSupplyEvent(
     event.transaction.from.toHex()
