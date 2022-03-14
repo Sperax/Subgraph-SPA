@@ -10,10 +10,10 @@ type spaL2TransferEvent @entity {
   gasPrice: BigInt!
   gasUsed: BigInt!
   timeStamp: String!
+  timeStampUnix: BigInt!
   blockNumber: BigInt!
   transactionHash: Bytes!
 }
-
 type spaL2Balance @entity {
   id: ID!
   bootstrapLiquidityDeployer: BigDecimal!
@@ -28,6 +28,38 @@ type spaL2Balance @entity {
   spaFarmRewarder: BigDecimal!
   totalBalances:BigDecimal!
   timeStamp: String!
+  timeStampUnix: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+
+#--------------------------DAILY-EVENTS-(GENERATED-ONCE-A-DAY)-----------------------------
+
+type spaL2DayBalance @entity {
+  id: ID!
+  bootstrapLiquidityDeployer: BigDecimal!
+  usdsUsdcFarmRewarder: BigDecimal!
+  usdsUsdcFarmVesting: BigDecimal!
+  spaUsdsFarmRewarder1: BigDecimal!
+  spaUsdsFarmVesting1: BigDecimal!
+  spaUsdsFarmRewarder2: BigDecimal!
+  spaUsdsFarmVesting2: BigDecimal!
+  spaReserveL2MultiSig: BigDecimal!
+  spaFarm: BigDecimal!
+  spaFarmRewarder: BigDecimal!
+  totalBalances:BigDecimal!
+  timeStamp: String!
+  timeStampUnix: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+type spaL2TotalSupplyDayEvent @entity {
+  id: ID!
+  totalSupply: BigDecimal!
+  gasPrice: BigInt!
+  gasUsed: BigInt!
+  timeStamp: String!
+  timeStampUnix: BigInt!
   blockNumber: BigInt!
   transactionHash: Bytes!
 }

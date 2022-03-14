@@ -7,6 +7,7 @@ type spaL1TransferEvent @entity {
   gasPrice: BigInt!
   gasUsed: BigInt!
   timeStamp: String!
+  timeStampUnix: BigInt!
   blockNumber: BigInt!
   transactionHash: Bytes!
 }
@@ -21,30 +22,57 @@ type wspaL1TransferEvent @entity {
   gasPrice: BigInt!
   gasUsed: BigInt!
   timeStamp: String!
+  timeStampUnix: BigInt!
   blockNumber: BigInt!
   transactionHash: Bytes!
 }
 type spaL1Balance @entity {
   id: ID!
   wSpaBalance: wSpaBalanceEvent
-  bootstrapLiquidity:BigDecimal!
-  bootstrapLiquidityDeployer:BigDecimal!
-  privateSale:BigDecimal!
-  teamAdvisor:BigDecimal!
-  SperaxFoundation:BigDecimal!
-  StakingRewards:BigDecimal!
-  treasury:BigDecimal!
-  teamAdvisor2:BigDecimal!
-  totalBalancesL1:BigDecimal!
+  bootstrapLiquidity: BigDecimal!
+  bootstrapLiquidityDeployer: BigDecimal!
+  privateSale: BigDecimal!
+  teamAdvisor: BigDecimal!
+  SperaxFoundation: BigDecimal!
+  StakingRewards: BigDecimal!
+  treasury: BigDecimal!
+  teamAdvisor2: BigDecimal!
+  totalBalancesL1: BigDecimal!
   timeStamp: String!
+  timeStampUnix: BigInt!
   blockNumber: BigInt!
   transactionHash: Bytes!
 }
-
+type spaL1DayBalance @entity {
+  id: ID!
+  wSpaBalance: wSpaBalanceEvent
+  bootstrapLiquidity: BigDecimal!
+  bootstrapLiquidityDeployer: BigDecimal!
+  privateSale: BigDecimal!
+  teamAdvisor: BigDecimal!
+  SperaxFoundation: BigDecimal!
+  StakingRewards: BigDecimal!
+  treasury: BigDecimal!
+  teamAdvisor2: BigDecimal!
+  totalBalancesL1: BigDecimal!
+  timeStamp: String!
+  timeStampUnix: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
 type spaL1TotalSupplyEvent @entity {
   id: ID!
   spaL1TotalSupply: BigDecimal!
   timeStamp: String!
+  timeStampUnix: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+type spaL1TotalSupplyDayEvent @entity {
+  id: ID!
+  spaL1TotalSupply: BigDecimal!
+  timeStamp: String!
+  timeStampUnix: BigInt!
   blockNumber: BigInt!
   transactionHash: Bytes!
 }
@@ -52,13 +80,32 @@ type wSpaTotalSupplyEvent @entity {
   id: ID!
   wSpaTotalSupply: BigDecimal!
   timeStamp: String!
+  timeStampUnix: BigInt!
   blockNumber: BigInt!
   transactionHash: Bytes!
 }
+type wSpaTotalSupplyDayEvent @entity {
+  id: ID!
+  wSpaTotalSupply: BigDecimal!
+  timeStamp: String!
+  timeStampUnix: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+type wSpaBalanceDayEvent @entity {
+  id: ID!
+  arbitrumLockedBridgeBlance: BigDecimal!
+  timeStamp: String!
+  timeStampUnix: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+
 type wSpaBalanceEvent @entity {
   id: ID!
   arbitrumLockedBridgeBlance: BigDecimal!
   timeStamp: String!
+  timeStampUnix: BigInt!
   blockNumber: BigInt!
   transactionHash: Bytes!
 }
