@@ -17,8 +17,6 @@ type wspaL1TransferEvent @entity {
   from: Bytes!
   to: Bytes!
   value: BigDecimal!
-  totalSupply: BigDecimal!
-  arbitrumLockedBridgeBlance: BigDecimal!
   gasPrice: BigInt!
   gasUsed: BigInt!
   timeStamp: String!
@@ -95,6 +93,8 @@ type wSpaTotalSupplyDayEvent @entity {
 type wSpaBalanceDayEvent @entity {
   id: ID!
   arbitrumLockedBridgeBlance: BigDecimal!
+  wSpaBootstrapLiquidityDeployer: BigDecimal!
+  wSpaTotalBalances: BigDecimal!
   timeStamp: String!
   timeStampUnix: BigInt!
   blockNumber: BigInt!
@@ -104,6 +104,8 @@ type wSpaBalanceDayEvent @entity {
 type wSpaBalanceEvent @entity {
   id: ID!
   arbitrumLockedBridgeBlance: BigDecimal!
+  wSpaBootstrapLiquidityDeployer: BigDecimal!
+  wSpaTotalBalances: BigDecimal!
   timeStamp: String!
   timeStampUnix: BigInt!
   blockNumber: BigInt!

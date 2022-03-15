@@ -80,6 +80,30 @@ export function handleTransfer(event: Transfer): void {
     dayBalance.arbitrumLockedBridgeBlance =
       wSpaBalance.arbitrumLockedBridgeBlance;
   }
+
+  let wSpaBootstrapLiquidityDeployer = erc20.try_balanceOf(
+    Address.fromString("0xc28c6970D8A345988e8335b1C229dEA3c802e0a6")
+  );
+  if (wSpaBootstrapLiquidityDeployer.reverted) {
+    log.warning("wSpaBootstrapLiquidityDeployer Revert", []);
+  } else {
+    wSpaBalance.wSpaBootstrapLiquidityDeployer =
+      wSpaBootstrapLiquidityDeployer.value
+        .toBigDecimal()
+        .div(BigDecimal.fromString("1000000000000000000"));
+
+    dayBalance.wSpaBootstrapLiquidityDeployer =
+      wSpaBalance.wSpaBootstrapLiquidityDeployer;
+  }
+  wSpaBalance.wSpaTotalBalances =
+    wSpaBalance.wSpaBootstrapLiquidityDeployer.plus(
+      wSpaBalance.arbitrumLockedBridgeBlance
+    );
+
+    dayBalance.wSpaTotalBalances =
+    dayBalance.wSpaBootstrapLiquidityDeployer.plus(
+      dayBalance.arbitrumLockedBridgeBlance
+    );
   // Transfer Entities
 
   transfer.from = event.params.from;
