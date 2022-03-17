@@ -6,6 +6,8 @@ import {
   wSpaTotalSupplyEvent,
   wSpaBalanceDayEvent,
   wSpaBalanceEvent,
+  wSpaL1FromWallet,
+  wSpaL1ToWallet,
 } from "../generated/schema";
 
 import {
@@ -15,7 +17,13 @@ import {
 
 export function handleTransfer(event: Transfer): void {
   // Initialize Entities
+  let fromWallet= new wSpaL1FromWallet(event.params.from.toHex())
+  fromWallet.blockNumber=event.block.number
+  let toWallet= new wSpaL1ToWallet(event.params.from.toHex())
+  toWallet.blockNumber=event.block.number
 
+  fromWallet.save()
+  toWallet.save()
   let transfer = new wspaL1TransferEvent(
     event.transaction.from
       .toHex()

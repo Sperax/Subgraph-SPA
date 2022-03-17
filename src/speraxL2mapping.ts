@@ -6,6 +6,8 @@ import {
   spaL2Balance,
   spaL2DayBalance,
   spaL2TotalSupplyDayEvent,
+  spaL2FromWallet,
+  spaL2ToWallet,
 } from "../generated/schema";
 import {
   timestampConvertDateTime,
@@ -15,6 +17,13 @@ import {
 } from "../src/utilis/utils";
 
 export function handleTransfer(event: Transfer): void {
+  let fromWallet = new spaL2FromWallet(event.params.from.toHex());
+  fromWallet.blockNumber = event.block.number;
+  let toWallet = new spaL2ToWallet(event.params.from.toHex());
+  toWallet.blockNumber = event.block.number;
+  
+  fromWallet.save();
+  toWallet.save();
   let entity = new spaL2TransferEvent(
     event.transaction.from
       .toHex()

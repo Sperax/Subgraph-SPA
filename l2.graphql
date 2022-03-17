@@ -32,7 +32,18 @@ type spaL2Balance @entity {
   blockNumber: BigInt!
   transactionHash: Bytes!
 }
-
+type spaL2FromWallet @entity {
+  id: ID!
+  timeStamp: String!
+  timeStampUnix: BigInt!
+  blockNumber: BigInt!
+}
+type spaL2ToWallet @entity {
+  id: ID!
+  timeStamp: String!
+  timeStampUnix: BigInt!
+  blockNumber: BigInt!
+}
 #--------------------------DAILY-EVENTS-(GENERATED-ONCE-A-DAY)-----------------------------
 
 type spaL2DayBalance @entity {

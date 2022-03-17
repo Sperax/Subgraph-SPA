@@ -11,7 +11,30 @@ type spaL1TransferEvent @entity {
   blockNumber: BigInt!
   transactionHash: Bytes!
 }
-
+type spaL1FromWallet @entity {
+  id: ID!
+  timeStamp: String!
+  timeStampUnix: BigInt!
+  blockNumber: BigInt!
+}
+type spaL1ToWallet @entity {
+  id: ID!
+  timeStamp: String!
+  timeStampUnix: BigInt!
+  blockNumber: BigInt!
+}
+type wSpaL1FromWallet @entity {
+  id: ID!
+  timeStamp: String!
+  timeStampUnix: BigInt!
+  blockNumber: BigInt!
+}
+type wSpaL1ToWallet @entity {
+  id: ID!
+  timeStamp: String!
+  timeStampUnix: BigInt!
+  blockNumber: BigInt!
+}
 type wspaL1TransferEvent @entity {
   id: ID!
   from: Bytes!
