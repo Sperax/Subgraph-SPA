@@ -777,3 +777,477 @@ export class spaL2TotalSupplyDayEvent extends Entity {
     this.set("transactionHash", Value.fromBytes(value));
   }
 }
+
+export class spaL2FarmStakeEvent extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+
+    this.set("account", Value.fromBytes(Bytes.empty()));
+    this.set("amount", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("totalStakedSPA", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("count", Value.fromBigInt(BigInt.zero()));
+    this.set("expiryDate", Value.fromBigInt(BigInt.zero()));
+    this.set("lockupPeriod", Value.fromBigInt(BigInt.zero()));
+    this.set("gasPrice", Value.fromBigInt(BigInt.zero()));
+    this.set("gasUsed", Value.fromBigInt(BigInt.zero()));
+    this.set("timeStamp", Value.fromString(""));
+    this.set("timeStampUnix", Value.fromBigInt(BigInt.zero()));
+    this.set("blockNumber", Value.fromBigInt(BigInt.zero()));
+    this.set("transactionHash", Value.fromBytes(Bytes.empty()));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id != null, "Cannot save spaL2FarmStakeEvent entity without an ID");
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        "Cannot save spaL2FarmStakeEvent entity with non-string ID. " +
+          'Considering using .toHex() to convert the "id" to a string.'
+      );
+      store.set("spaL2FarmStakeEvent", id.toString(), this);
+    }
+  }
+
+  static load(id: string): spaL2FarmStakeEvent | null {
+    return changetype<spaL2FarmStakeEvent | null>(
+      store.get("spaL2FarmStakeEvent", id)
+    );
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value!.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get account(): Bytes {
+    let value = this.get("account");
+    return value!.toBytes();
+  }
+
+  set account(value: Bytes) {
+    this.set("account", Value.fromBytes(value));
+  }
+
+  get amount(): BigDecimal {
+    let value = this.get("amount");
+    return value!.toBigDecimal();
+  }
+
+  set amount(value: BigDecimal) {
+    this.set("amount", Value.fromBigDecimal(value));
+  }
+
+  get totalStakedSPA(): BigDecimal {
+    let value = this.get("totalStakedSPA");
+    return value!.toBigDecimal();
+  }
+
+  set totalStakedSPA(value: BigDecimal) {
+    this.set("totalStakedSPA", Value.fromBigDecimal(value));
+  }
+
+  get count(): BigInt {
+    let value = this.get("count");
+    return value!.toBigInt();
+  }
+
+  set count(value: BigInt) {
+    this.set("count", Value.fromBigInt(value));
+  }
+
+  get expiryDate(): BigInt {
+    let value = this.get("expiryDate");
+    return value!.toBigInt();
+  }
+
+  set expiryDate(value: BigInt) {
+    this.set("expiryDate", Value.fromBigInt(value));
+  }
+
+  get lockupPeriod(): BigInt {
+    let value = this.get("lockupPeriod");
+    return value!.toBigInt();
+  }
+
+  set lockupPeriod(value: BigInt) {
+    this.set("lockupPeriod", Value.fromBigInt(value));
+  }
+
+  get gasPrice(): BigInt {
+    let value = this.get("gasPrice");
+    return value!.toBigInt();
+  }
+
+  set gasPrice(value: BigInt) {
+    this.set("gasPrice", Value.fromBigInt(value));
+  }
+
+  get gasUsed(): BigInt {
+    let value = this.get("gasUsed");
+    return value!.toBigInt();
+  }
+
+  set gasUsed(value: BigInt) {
+    this.set("gasUsed", Value.fromBigInt(value));
+  }
+
+  get timeStamp(): string {
+    let value = this.get("timeStamp");
+    return value!.toString();
+  }
+
+  set timeStamp(value: string) {
+    this.set("timeStamp", Value.fromString(value));
+  }
+
+  get timeStampUnix(): BigInt {
+    let value = this.get("timeStampUnix");
+    return value!.toBigInt();
+  }
+
+  set timeStampUnix(value: BigInt) {
+    this.set("timeStampUnix", Value.fromBigInt(value));
+  }
+
+  get blockNumber(): BigInt {
+    let value = this.get("blockNumber");
+    return value!.toBigInt();
+  }
+
+  set blockNumber(value: BigInt) {
+    this.set("blockNumber", Value.fromBigInt(value));
+  }
+
+  get transactionHash(): Bytes {
+    let value = this.get("transactionHash");
+    return value!.toBytes();
+  }
+
+  set transactionHash(value: Bytes) {
+    this.set("transactionHash", Value.fromBytes(value));
+  }
+}
+
+export class spaL2FarmWithdrawEvent extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+
+    this.set("account", Value.fromBytes(Bytes.empty()));
+    this.set("amount", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("totalStakedSPA", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("count", Value.fromBigInt(BigInt.zero()));
+    this.set("expiryDate", Value.fromBigInt(BigInt.zero()));
+    this.set("lockupPeriod", Value.fromBigInt(BigInt.zero()));
+    this.set("gasPrice", Value.fromBigInt(BigInt.zero()));
+    this.set("gasUsed", Value.fromBigInt(BigInt.zero()));
+    this.set("timeStamp", Value.fromString(""));
+    this.set("timeStampUnix", Value.fromBigInt(BigInt.zero()));
+    this.set("blockNumber", Value.fromBigInt(BigInt.zero()));
+    this.set("transactionHash", Value.fromBytes(Bytes.empty()));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(
+      id != null,
+      "Cannot save spaL2FarmWithdrawEvent entity without an ID"
+    );
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        "Cannot save spaL2FarmWithdrawEvent entity with non-string ID. " +
+          'Considering using .toHex() to convert the "id" to a string.'
+      );
+      store.set("spaL2FarmWithdrawEvent", id.toString(), this);
+    }
+  }
+
+  static load(id: string): spaL2FarmWithdrawEvent | null {
+    return changetype<spaL2FarmWithdrawEvent | null>(
+      store.get("spaL2FarmWithdrawEvent", id)
+    );
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value!.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get account(): Bytes {
+    let value = this.get("account");
+    return value!.toBytes();
+  }
+
+  set account(value: Bytes) {
+    this.set("account", Value.fromBytes(value));
+  }
+
+  get amount(): BigDecimal {
+    let value = this.get("amount");
+    return value!.toBigDecimal();
+  }
+
+  set amount(value: BigDecimal) {
+    this.set("amount", Value.fromBigDecimal(value));
+  }
+
+  get totalStakedSPA(): BigDecimal {
+    let value = this.get("totalStakedSPA");
+    return value!.toBigDecimal();
+  }
+
+  set totalStakedSPA(value: BigDecimal) {
+    this.set("totalStakedSPA", Value.fromBigDecimal(value));
+  }
+
+  get count(): BigInt {
+    let value = this.get("count");
+    return value!.toBigInt();
+  }
+
+  set count(value: BigInt) {
+    this.set("count", Value.fromBigInt(value));
+  }
+
+  get expiryDate(): BigInt {
+    let value = this.get("expiryDate");
+    return value!.toBigInt();
+  }
+
+  set expiryDate(value: BigInt) {
+    this.set("expiryDate", Value.fromBigInt(value));
+  }
+
+  get lockupPeriod(): BigInt {
+    let value = this.get("lockupPeriod");
+    return value!.toBigInt();
+  }
+
+  set lockupPeriod(value: BigInt) {
+    this.set("lockupPeriod", Value.fromBigInt(value));
+  }
+
+  get gasPrice(): BigInt {
+    let value = this.get("gasPrice");
+    return value!.toBigInt();
+  }
+
+  set gasPrice(value: BigInt) {
+    this.set("gasPrice", Value.fromBigInt(value));
+  }
+
+  get gasUsed(): BigInt {
+    let value = this.get("gasUsed");
+    return value!.toBigInt();
+  }
+
+  set gasUsed(value: BigInt) {
+    this.set("gasUsed", Value.fromBigInt(value));
+  }
+
+  get timeStamp(): string {
+    let value = this.get("timeStamp");
+    return value!.toString();
+  }
+
+  set timeStamp(value: string) {
+    this.set("timeStamp", Value.fromString(value));
+  }
+
+  get timeStampUnix(): BigInt {
+    let value = this.get("timeStampUnix");
+    return value!.toBigInt();
+  }
+
+  set timeStampUnix(value: BigInt) {
+    this.set("timeStampUnix", Value.fromBigInt(value));
+  }
+
+  get blockNumber(): BigInt {
+    let value = this.get("blockNumber");
+    return value!.toBigInt();
+  }
+
+  set blockNumber(value: BigInt) {
+    this.set("blockNumber", Value.fromBigInt(value));
+  }
+
+  get transactionHash(): Bytes {
+    let value = this.get("transactionHash");
+    return value!.toBytes();
+  }
+
+  set transactionHash(value: Bytes) {
+    this.set("transactionHash", Value.fromBytes(value));
+  }
+}
+
+export class spaL2FarmWithdrawPenalityEvent extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+
+    this.set("account", Value.fromBytes(Bytes.empty()));
+    this.set("amount", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("totalStakedSPA", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("count", Value.fromBigInt(BigInt.zero()));
+    this.set("expiryDate", Value.fromBigInt(BigInt.zero()));
+    this.set("lockupPeriod", Value.fromBigInt(BigInt.zero()));
+    this.set("gasPrice", Value.fromBigInt(BigInt.zero()));
+    this.set("gasUsed", Value.fromBigInt(BigInt.zero()));
+    this.set("timeStamp", Value.fromString(""));
+    this.set("timeStampUnix", Value.fromBigInt(BigInt.zero()));
+    this.set("blockNumber", Value.fromBigInt(BigInt.zero()));
+    this.set("transactionHash", Value.fromBytes(Bytes.empty()));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(
+      id != null,
+      "Cannot save spaL2FarmWithdrawPenalityEvent entity without an ID"
+    );
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        "Cannot save spaL2FarmWithdrawPenalityEvent entity with non-string ID. " +
+          'Considering using .toHex() to convert the "id" to a string.'
+      );
+      store.set("spaL2FarmWithdrawPenalityEvent", id.toString(), this);
+    }
+  }
+
+  static load(id: string): spaL2FarmWithdrawPenalityEvent | null {
+    return changetype<spaL2FarmWithdrawPenalityEvent | null>(
+      store.get("spaL2FarmWithdrawPenalityEvent", id)
+    );
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value!.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get account(): Bytes {
+    let value = this.get("account");
+    return value!.toBytes();
+  }
+
+  set account(value: Bytes) {
+    this.set("account", Value.fromBytes(value));
+  }
+
+  get amount(): BigDecimal {
+    let value = this.get("amount");
+    return value!.toBigDecimal();
+  }
+
+  set amount(value: BigDecimal) {
+    this.set("amount", Value.fromBigDecimal(value));
+  }
+
+  get totalStakedSPA(): BigDecimal {
+    let value = this.get("totalStakedSPA");
+    return value!.toBigDecimal();
+  }
+
+  set totalStakedSPA(value: BigDecimal) {
+    this.set("totalStakedSPA", Value.fromBigDecimal(value));
+  }
+
+  get count(): BigInt {
+    let value = this.get("count");
+    return value!.toBigInt();
+  }
+
+  set count(value: BigInt) {
+    this.set("count", Value.fromBigInt(value));
+  }
+
+  get expiryDate(): BigInt {
+    let value = this.get("expiryDate");
+    return value!.toBigInt();
+  }
+
+  set expiryDate(value: BigInt) {
+    this.set("expiryDate", Value.fromBigInt(value));
+  }
+
+  get lockupPeriod(): BigInt {
+    let value = this.get("lockupPeriod");
+    return value!.toBigInt();
+  }
+
+  set lockupPeriod(value: BigInt) {
+    this.set("lockupPeriod", Value.fromBigInt(value));
+  }
+
+  get gasPrice(): BigInt {
+    let value = this.get("gasPrice");
+    return value!.toBigInt();
+  }
+
+  set gasPrice(value: BigInt) {
+    this.set("gasPrice", Value.fromBigInt(value));
+  }
+
+  get gasUsed(): BigInt {
+    let value = this.get("gasUsed");
+    return value!.toBigInt();
+  }
+
+  set gasUsed(value: BigInt) {
+    this.set("gasUsed", Value.fromBigInt(value));
+  }
+
+  get timeStamp(): string {
+    let value = this.get("timeStamp");
+    return value!.toString();
+  }
+
+  set timeStamp(value: string) {
+    this.set("timeStamp", Value.fromString(value));
+  }
+
+  get timeStampUnix(): BigInt {
+    let value = this.get("timeStampUnix");
+    return value!.toBigInt();
+  }
+
+  set timeStampUnix(value: BigInt) {
+    this.set("timeStampUnix", Value.fromBigInt(value));
+  }
+
+  get blockNumber(): BigInt {
+    let value = this.get("blockNumber");
+    return value!.toBigInt();
+  }
+
+  set blockNumber(value: BigInt) {
+    this.set("blockNumber", Value.fromBigInt(value));
+  }
+
+  get transactionHash(): Bytes {
+    let value = this.get("transactionHash");
+    return value!.toBytes();
+  }
+
+  set transactionHash(value: Bytes) {
+    this.set("transactionHash", Value.fromBytes(value));
+  }
+}

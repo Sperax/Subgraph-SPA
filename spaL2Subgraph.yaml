@@ -22,4 +22,38 @@ dataSources:
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
       file: ./src/speraxL2mapping.ts
-
+  - kind: ethereum
+    name: SPA_Staking_Farm
+    network: arbitrum-one
+    source:
+      address: "0xc150cbdDC5932258fAc768bEB4d2352D127039fd"
+      startBlock: 6067182
+      abi: SPA_Staking_Farm
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - OwnershipTransferred
+        - RewardFrozen
+        - Staked
+        - StakingEnabled
+        - Withdrawn
+        - WithdrawnWithPenalty
+      abis:
+        - name: SPA_Staking_Farm
+          file: ./abis/SPA_Staking_Farm.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: RewardFrozen(indexed address,bool)
+          handler: handleRewardFrozen
+        - event: Staked(indexed address,uint256,uint256)
+          handler: handleStaked
+        - event: StakingEnabled(bool)
+          handler: handleStakingEnabled
+        - event: Withdrawn(indexed address,uint256,uint256)
+          handler: handleWithdrawn
+        - event: WithdrawnWithPenalty(indexed address,uint256,uint256)
+          handler: handleWithdrawnWithPenalty
+      file: ./src/SPA_Farm_Mapping.ts

@@ -73,4 +73,49 @@ type spaL2TotalSupplyDayEvent @entity {
   timeStampUnix: BigInt!
   blockNumber: BigInt!
   transactionHash: Bytes!
+}#--------------------------SPA-L2-Farm-----------------------------
+type spaL2FarmStakeEvent @entity {
+  id: ID!
+  account: Bytes!
+  amount: BigDecimal!
+  totalStakedSPA: BigDecimal!
+  count: BigInt!
+  expiryDate: BigInt!
+  lockupPeriod:BigInt!
+  gasPrice: BigInt!
+  gasUsed: BigInt!
+  timeStamp: String!
+  timeStampUnix: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+type spaL2FarmWithdrawEvent @entity {
+  id: ID!
+  account: Bytes!
+  amount: BigDecimal!
+  totalStakedSPA: BigDecimal!
+  count: BigInt!
+  expiryDate: BigInt!
+  lockupPeriod:BigInt!
+  gasPrice: BigInt!
+  gasUsed: BigInt!
+  timeStamp: String!
+  timeStampUnix: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+type spaL2FarmWithdrawPenalityEvent @entity {
+  id: ID!
+  account: Bytes!
+  amount: BigDecimal!
+  totalStakedSPA: BigDecimal!
+  count: BigInt!
+  expiryDate: BigInt!
+  lockupPeriod:BigInt!
+  gasPrice: BigInt!
+  gasUsed: BigInt!
+  timeStamp: String!
+  timeStampUnix: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
 }
