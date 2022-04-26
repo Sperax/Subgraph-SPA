@@ -29,9 +29,11 @@ export function handleStaked(event: Staked): void {
   );
 
   let contract = SPA_Staking_Farm.bind(event.address);
+  let getNumDeposits=contract.try_getNumDeposits(event.params.account)
+  getNumDeposits.value
   let expiryTime = contract.try_getDeposits(
     event.params.account,
-    BigInt.fromString("0")
+    getNumDeposits.value.minus(BigInt.fromI32(1))
   );
   if (expiryTime.reverted) {
     log.warning("ExpiryTime Revert", []);
