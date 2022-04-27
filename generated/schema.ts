@@ -943,8 +943,6 @@ export class spaL2FarmWithdrawEvent extends Entity {
     this.set("amount", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("totalStakedSPA", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("count", Value.fromBigInt(BigInt.zero()));
-    this.set("expiryDate", Value.fromBigInt(BigInt.zero()));
-    this.set("lockupPeriod", Value.fromBigInt(BigInt.zero()));
     this.set("gasPrice", Value.fromBigInt(BigInt.zero()));
     this.set("gasUsed", Value.fromBigInt(BigInt.zero()));
     this.set("timeStamp", Value.fromString(""));
@@ -1020,24 +1018,6 @@ export class spaL2FarmWithdrawEvent extends Entity {
     this.set("count", Value.fromBigInt(value));
   }
 
-  get expiryDate(): BigInt {
-    let value = this.get("expiryDate");
-    return value!.toBigInt();
-  }
-
-  set expiryDate(value: BigInt) {
-    this.set("expiryDate", Value.fromBigInt(value));
-  }
-
-  get lockupPeriod(): BigInt {
-    let value = this.get("lockupPeriod");
-    return value!.toBigInt();
-  }
-
-  set lockupPeriod(value: BigInt) {
-    this.set("lockupPeriod", Value.fromBigInt(value));
-  }
-
   get gasPrice(): BigInt {
     let value = this.get("gasPrice");
     return value!.toBigInt();
@@ -1102,8 +1082,6 @@ export class spaL2FarmWithdrawPenalityEvent extends Entity {
     this.set("amount", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("totalStakedSPA", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("count", Value.fromBigInt(BigInt.zero()));
-    this.set("expiryDate", Value.fromBigInt(BigInt.zero()));
-    this.set("lockupPeriod", Value.fromBigInt(BigInt.zero()));
     this.set("gasPrice", Value.fromBigInt(BigInt.zero()));
     this.set("gasUsed", Value.fromBigInt(BigInt.zero()));
     this.set("timeStamp", Value.fromString(""));
@@ -1177,24 +1155,6 @@ export class spaL2FarmWithdrawPenalityEvent extends Entity {
 
   set count(value: BigInt) {
     this.set("count", Value.fromBigInt(value));
-  }
-
-  get expiryDate(): BigInt {
-    let value = this.get("expiryDate");
-    return value!.toBigInt();
-  }
-
-  set expiryDate(value: BigInt) {
-    this.set("expiryDate", Value.fromBigInt(value));
-  }
-
-  get lockupPeriod(): BigInt {
-    let value = this.get("lockupPeriod");
-    return value!.toBigInt();
-  }
-
-  set lockupPeriod(value: BigInt) {
-    this.set("lockupPeriod", Value.fromBigInt(value));
   }
 
   get gasPrice(): BigInt {

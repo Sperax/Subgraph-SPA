@@ -28,7 +28,7 @@ dataSources:
     network: arbitrum-one
     source:
       address: "0xc150cbdDC5932258fAc768bEB4d2352D127039fd"
-      startBlock: 6067182
+      startBlock: 6014438
       abi: SPA_Staking_Farm
     mapping:
       kind: ethereum/events

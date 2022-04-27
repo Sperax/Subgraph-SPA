@@ -95,8 +95,6 @@ type spaL2FarmWithdrawEvent @entity {
   amount: BigDecimal!
   totalStakedSPA: BigDecimal!
   count: BigInt!
-  expiryDate: BigInt!
-  lockupPeriod:BigInt!
   gasPrice: BigInt!
   gasUsed: BigInt!
   timeStamp: String!
@@ -110,8 +108,6 @@ type spaL2FarmWithdrawPenalityEvent @entity {
   amount: BigDecimal!
   totalStakedSPA: BigDecimal!
   count: BigInt!
-  expiryDate: BigInt!
-  lockupPeriod:BigInt!
   gasPrice: BigInt!
   gasUsed: BigInt!
   timeStamp: String!
