@@ -21,7 +21,7 @@ export function handleTransfer(event: Transfer): void {
   fromWallet.blockNumber = event.block.number;
   let toWallet = new spaL2ToWallet(event.params.from.toHex());
   toWallet.blockNumber = event.block.number;
-  
+
   fromWallet.save();
   toWallet.save();
   let entity = new spaL2TransferEvent(
@@ -134,6 +134,18 @@ export function handleTransfer(event: Transfer): void {
     "0x852afF031bb282C054B26628A799D7F3a896873e"
   );
   dayBalance.spaFarmRewarder = balance.spaFarmRewarder;
+  // 11- Reward Distributor
+  balance.rewardDistributor = spaL2BalanceCheck(
+    erc20,
+    "0x2c07bc934974BbF413a4a4CeDA98713DCb8d9e16"
+  );
+  dayBalance.rewardDistributor = balance.rewardDistributor;
+  // 12- SPA Buyback
+  balance.spaBuyback = spaL2BalanceCheck(
+    erc20,
+    "0xA61a0719e9714c95345e89a2f1C83Fae6f5745ef"
+  );
+  dayBalance.spaBuyback = balance.spaBuyback;
   balance.totalBalances = balance.bootstrapLiquidityDeployer
     .plus(balance.usdsUsdcFarmRewarder)
     .plus(balance.usdsUsdcFarmVesting)
@@ -143,7 +155,9 @@ export function handleTransfer(event: Transfer): void {
     .plus(balance.spaUsdsFarmVesting2)
     .plus(balance.spaReserveL2MultiSig)
     .plus(balance.spaFarmRewarder)
-    .plus(balance.spaFarm);
+    .plus(balance.spaFarm)
+    .plus(balance.rewardDistributor)
+    .plus(balance.spaBuyback);
   dayBalance.totalBalances = balance.totalBalances;
 
   // Balances Entities

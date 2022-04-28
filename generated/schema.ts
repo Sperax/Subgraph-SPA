@@ -185,6 +185,8 @@ export class spaL2Balance extends Entity {
     this.set("spaReserveL2MultiSig", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("spaFarm", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("spaFarmRewarder", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("rewardDistributor", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("spaBuyback", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("totalBalances", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("timeStamp", Value.fromString(""));
     this.set("timeStampUnix", Value.fromBigInt(BigInt.zero()));
@@ -306,6 +308,24 @@ export class spaL2Balance extends Entity {
 
   set spaFarmRewarder(value: BigDecimal) {
     this.set("spaFarmRewarder", Value.fromBigDecimal(value));
+  }
+
+  get rewardDistributor(): BigDecimal {
+    let value = this.get("rewardDistributor");
+    return value!.toBigDecimal();
+  }
+
+  set rewardDistributor(value: BigDecimal) {
+    this.set("rewardDistributor", Value.fromBigDecimal(value));
+  }
+
+  get spaBuyback(): BigDecimal {
+    let value = this.get("spaBuyback");
+    return value!.toBigDecimal();
+  }
+
+  set spaBuyback(value: BigDecimal) {
+    this.set("spaBuyback", Value.fromBigDecimal(value));
   }
 
   get totalBalances(): BigDecimal {
@@ -500,6 +520,8 @@ export class spaL2DayBalance extends Entity {
     this.set("spaReserveL2MultiSig", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("spaFarm", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("spaFarmRewarder", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("rewardDistributor", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("spaBuyback", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("totalBalances", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("timeStamp", Value.fromString(""));
     this.set("timeStampUnix", Value.fromBigInt(BigInt.zero()));
@@ -621,6 +643,24 @@ export class spaL2DayBalance extends Entity {
 
   set spaFarmRewarder(value: BigDecimal) {
     this.set("spaFarmRewarder", Value.fromBigDecimal(value));
+  }
+
+  get rewardDistributor(): BigDecimal {
+    let value = this.get("rewardDistributor");
+    return value!.toBigDecimal();
+  }
+
+  set rewardDistributor(value: BigDecimal) {
+    this.set("rewardDistributor", Value.fromBigDecimal(value));
+  }
+
+  get spaBuyback(): BigDecimal {
+    let value = this.get("spaBuyback");
+    return value!.toBigDecimal();
+  }
+
+  set spaBuyback(value: BigDecimal) {
+    this.set("spaBuyback", Value.fromBigDecimal(value));
   }
 
   get totalBalances(): BigDecimal {

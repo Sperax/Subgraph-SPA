@@ -58,6 +58,7 @@ type spaL1Balance @entity {
   StakingRewards: BigDecimal!
   treasury: BigDecimal!
   teamAdvisor2: BigDecimal!
+  rewardDistributor:BigDecimal!
   totalBalancesL1: BigDecimal!
   timeStamp: String!
   timeStampUnix: BigInt!
@@ -75,6 +76,7 @@ type spaL1DayBalance @entity {
   StakingRewards: BigDecimal!
   treasury: BigDecimal!
   teamAdvisor2: BigDecimal!
+  rewardDistributor:BigDecimal! 
   totalBalancesL1: BigDecimal!
   timeStamp: String!
   timeStampUnix: BigInt!

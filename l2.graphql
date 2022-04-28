@@ -26,6 +26,8 @@ type spaL2Balance @entity {
   spaReserveL2MultiSig: BigDecimal!
   spaFarm: BigDecimal!
   spaFarmRewarder: BigDecimal!
+  rewardDistributor:BigDecimal!
+  spaBuyback:BigDecimal!
   totalBalances:BigDecimal!
   timeStamp: String!
   timeStampUnix: BigInt!
@@ -58,6 +60,8 @@ type spaL2DayBalance @entity {
   spaReserveL2MultiSig: BigDecimal!
   spaFarm: BigDecimal!
   spaFarmRewarder: BigDecimal!
+  rewardDistributor:BigDecimal!
+  spaBuyback:BigDecimal!
   totalBalances:BigDecimal!
   timeStamp: String!
   timeStampUnix: BigInt!

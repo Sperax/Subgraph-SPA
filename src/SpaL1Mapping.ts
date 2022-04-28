@@ -18,14 +18,14 @@ import {
 
 export function handleTransfer(event: Transfer): void {
   // Initialize Entities
-  let fromWallet= new spaL1FromWallet(event.params.from.toHex())
-  fromWallet.blockNumber=event.block.number
-  let toWallet= new spaL1ToWallet(event.params.from.toHex())
-  toWallet.blockNumber=event.block.number
+  let fromWallet = new spaL1FromWallet(event.params.from.toHex());
+  fromWallet.blockNumber = event.block.number;
+  let toWallet = new spaL1ToWallet(event.params.from.toHex());
+  toWallet.blockNumber = event.block.number;
 
-  fromWallet.save()
-  toWallet.save()
-  
+  fromWallet.save();
+  toWallet.save();
+
   let transfer = new spaL1TransferEvent(
     event.transaction.from
       .toHex()
@@ -37,7 +37,6 @@ export function handleTransfer(event: Transfer): void {
           .concat(event.transaction.hash.toHex())
       )
   );
-
 
   let balance = new spaL1Balance(
     event.transaction.from
@@ -61,10 +60,6 @@ export function handleTransfer(event: Transfer): void {
   let dayTotalSupply = new spaL1TotalSupplyDayEvent(
     timestampConvertDate(event.block.timestamp)
   );
-
-
-
-
 
   // Calculate L1 SPA Total Supply
 
@@ -138,6 +133,13 @@ export function handleTransfer(event: Transfer): void {
     "0xd6D462c58D09bff7f8ec49A995B38eA89C9c5402"
   );
   dayBalance.teamAdvisor2 = balance.teamAdvisor2;
+  // 9 Reward Distributor
+
+  balance.rewardDistributor = spaL1BalanceCheck(
+    erc20,
+    "0xa61DD4480BE2582283Afa54E461A1d3643b36040"
+  );
+  dayBalance.rewardDistributor = balance.teamAdvisor2;
   // Total SPA L1 Balances
   balance.totalBalancesL1 = balance.bootstrapLiquidityDeployer
     .plus(balance.bootstrapLiquidity)
@@ -146,8 +148,9 @@ export function handleTransfer(event: Transfer): void {
     .plus(balance.SperaxFoundation)
     .plus(balance.StakingRewards)
     .plus(balance.treasury)
-    .plus(balance.teamAdvisor2);
-  dayBalance.totalBalancesL1 =balance.totalBalancesL1 
+    .plus(balance.teamAdvisor2)
+    .plus(balance.rewardDistributor);
+  dayBalance.totalBalancesL1 = balance.totalBalancesL1;
 
   //Transfer Entities
   transfer.from = event.params.from;
@@ -162,8 +165,6 @@ export function handleTransfer(event: Transfer): void {
   transfer.gasPrice = event.transaction.gasPrice;
   transfer.gasUsed = event.block.gasUsed;
 
-
-
   // TotalSupply Entities
 
   spaL1TotalSupply.timeStamp = timestampConvertDateTime(event.block.timestamp);
@@ -171,13 +172,12 @@ export function handleTransfer(event: Transfer): void {
   spaL1TotalSupply.blockNumber = event.block.number;
   spaL1TotalSupply.transactionHash = event.transaction.hash;
 
-
   // Daily TotalSupply Entities
 
-    dayTotalSupply.timeStamp = timestampConvertDateTime(event.block.timestamp);
-    dayTotalSupply.timeStampUnix = event.block.timestamp;
-    dayTotalSupply.blockNumber = event.block.number;
-    dayTotalSupply.transactionHash = event.transaction.hash;
+  dayTotalSupply.timeStamp = timestampConvertDateTime(event.block.timestamp);
+  dayTotalSupply.timeStampUnix = event.block.timestamp;
+  dayTotalSupply.blockNumber = event.block.number;
+  dayTotalSupply.transactionHash = event.transaction.hash;
 
   // Balances Entities
 
@@ -185,7 +185,6 @@ export function handleTransfer(event: Transfer): void {
   balance.timeStampUnix = event.block.timestamp;
   balance.blockNumber = event.block.number;
   balance.transactionHash = event.transaction.hash;
-
 
   //Daily Balances Entities
 
@@ -196,9 +195,8 @@ export function handleTransfer(event: Transfer): void {
 
   // Saving Entities
   transfer.save();
-  dayTotalSupply.save()
+  dayTotalSupply.save();
   spaL1TotalSupply.save();
   balance.save();
   dayBalance.save();
-  
 }
