@@ -139,7 +139,7 @@ export function handleTransfer(event: Transfer): void {
     erc20,
     "0xa61DD4480BE2582283Afa54E461A1d3643b36040"
   );
-  dayBalance.rewardDistributor = balance.teamAdvisor2;
+  dayBalance.rewardDistributor = balance.rewardDistributor;
   // Total SPA L1 Balances
   balance.totalBalancesL1 = balance.bootstrapLiquidityDeployer
     .plus(balance.bootstrapLiquidity)
