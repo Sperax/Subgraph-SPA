@@ -140,6 +140,20 @@ export function handleTransfer(event: Transfer): void {
     "0xa61DD4480BE2582283Afa54E461A1d3643b36040"
   );
   dayBalance.rewardDistributor = balance.rewardDistributor;
+  // 10 foundation2
+
+  balance.foundation2 = spaL1BalanceCheck(
+    erc20,
+    "0x28c29E7db4aAA465259D17c4D49b283873308cAb"
+  );
+  dayBalance.foundation2 = balance.foundation2;
+  // 11 wallet From Tresaury
+
+  balance.walletFromTresaury = spaL1BalanceCheck(
+    erc20,
+    "0xb3186f799ec434eecbfd811468139efa9e37c134"
+  );
+  dayBalance.walletFromTresaury = balance.walletFromTresaury;
   // Total SPA L1 Balances
   balance.totalBalancesL1 = balance.bootstrapLiquidityDeployer
     .plus(balance.bootstrapLiquidity)
@@ -149,7 +163,9 @@ export function handleTransfer(event: Transfer): void {
     .plus(balance.StakingRewards)
     .plus(balance.treasury)
     .plus(balance.teamAdvisor2)
-    .plus(balance.rewardDistributor);
+    .plus(balance.rewardDistributor)
+    .plus(balance.foundation2)
+    .plus(balance.walletFromTresaury);
   dayBalance.totalBalancesL1 = balance.totalBalancesL1;
 
   //Transfer Entities
