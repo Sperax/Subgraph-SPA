@@ -154,6 +154,13 @@ export function handleTransfer(event: Transfer): void {
     "0xb3186f799ec434eecbfd811468139efa9e37c134"
   );
   dayBalance.walletFromTresaury = balance.walletFromTresaury;
+  // 12 veSPA L1
+
+  balance.veSPAL1 = spaL1BalanceCheck(
+    erc20,
+    "0xbF82a3212e13b2d407D10f5107b5C8404dE7F403"
+  );
+  dayBalance.veSPAL1 = balance.veSPAL1;
   // Total SPA L1 Balances
   balance.totalBalancesL1 = balance.bootstrapLiquidityDeployer
     .plus(balance.bootstrapLiquidity)
@@ -165,7 +172,8 @@ export function handleTransfer(event: Transfer): void {
     .plus(balance.teamAdvisor2)
     .plus(balance.rewardDistributor)
     .plus(balance.foundation2)
-    .plus(balance.walletFromTresaury);
+    .plus(balance.walletFromTresaury)
+    .plus(balance.veSPAL1);
   dayBalance.totalBalancesL1 = balance.totalBalancesL1;
 
   //Transfer Entities

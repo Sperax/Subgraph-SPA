@@ -61,6 +61,7 @@ type spaL1Balance @entity {
   rewardDistributor:BigDecimal!
   foundation2:BigDecimal!
   walletFromTresaury:BigDecimal!
+  veSPAL1:BigDecimal!
   totalBalancesL1: BigDecimal!
   timeStamp: String!
   timeStampUnix: BigInt!
@@ -80,6 +81,7 @@ type spaL1DayBalance @entity {
   teamAdvisor2: BigDecimal!
   rewardDistributor:BigDecimal!
   foundation2:BigDecimal!
+  veSPAL1:BigDecimal!
   walletFromTresaury:BigDecimal!
   totalBalancesL1: BigDecimal!
   timeStamp: String!

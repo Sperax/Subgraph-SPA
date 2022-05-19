@@ -550,6 +550,7 @@ export class spaL1Balance extends Entity {
     this.set("rewardDistributor", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("foundation2", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("walletFromTresaury", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("veSPAL1", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("totalBalancesL1", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("timeStamp", Value.fromString(""));
     this.set("timeStampUnix", Value.fromBigInt(BigInt.zero()));
@@ -699,6 +700,15 @@ export class spaL1Balance extends Entity {
     this.set("walletFromTresaury", Value.fromBigDecimal(value));
   }
 
+  get veSPAL1(): BigDecimal {
+    let value = this.get("veSPAL1");
+    return value!.toBigDecimal();
+  }
+
+  set veSPAL1(value: BigDecimal) {
+    this.set("veSPAL1", Value.fromBigDecimal(value));
+  }
+
   get totalBalancesL1(): BigDecimal {
     let value = this.get("totalBalancesL1");
     return value!.toBigDecimal();
@@ -763,6 +773,7 @@ export class spaL1DayBalance extends Entity {
     this.set("teamAdvisor2", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("rewardDistributor", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("foundation2", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("veSPAL1", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("walletFromTresaury", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("totalBalancesL1", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("timeStamp", Value.fromString(""));
@@ -902,6 +913,15 @@ export class spaL1DayBalance extends Entity {
 
   set foundation2(value: BigDecimal) {
     this.set("foundation2", Value.fromBigDecimal(value));
+  }
+
+  get veSPAL1(): BigDecimal {
+    let value = this.get("veSPAL1");
+    return value!.toBigDecimal();
+  }
+
+  set veSPAL1(value: BigDecimal) {
+    this.set("veSPAL1", Value.fromBigDecimal(value));
   }
 
   get walletFromTresaury(): BigDecimal {

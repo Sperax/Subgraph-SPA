@@ -146,6 +146,12 @@ export function handleTransfer(event: Transfer): void {
     "0xA61a0719e9714c95345e89a2f1C83Fae6f5745ef"
   );
   dayBalance.spaBuyback = balance.spaBuyback;
+  // 13- veSPA L2
+  balance.veSPAL2 = spaL2BalanceCheck(
+    erc20,
+    "0x2e2071180682Ce6C247B1eF93d382D509F5F6A17"
+  );
+  dayBalance.veSPAL2 = balance.veSPAL2;
   balance.totalBalances = balance.bootstrapLiquidityDeployer
     .plus(balance.usdsUsdcFarmRewarder)
     .plus(balance.usdsUsdcFarmVesting)
@@ -157,7 +163,8 @@ export function handleTransfer(event: Transfer): void {
     .plus(balance.spaFarmRewarder)
     .plus(balance.spaFarm)
     .plus(balance.rewardDistributor)
-    .plus(balance.spaBuyback);
+    .plus(balance.spaBuyback)
+    .plus(balance.veSPAL2);
   dayBalance.totalBalances = balance.totalBalances;
 
   // Balances Entities
