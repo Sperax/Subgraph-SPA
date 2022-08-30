@@ -152,6 +152,18 @@ export function handleTransfer(event: Transfer): void {
     "0x2e2071180682Ce6C247B1eF93d382D509F5F6A17"
   );
   dayBalance.veSPAL2 = balance.veSPAL2;
+  // 14- SPABootstrapedLDArb
+  balance.SPABootstrapedLDArb = spaL2BalanceCheck(
+    erc20,
+    "0xAF64e027D42bAc1C14277fd295De9Ae318eEF17E"
+  );
+  dayBalance.SPABootstrapedLDArb = balance.SPABootstrapedLDArb;
+  // 15- SPAStakingArbitrum
+  balance.SPAStakingArbitrum = spaL2BalanceCheck(
+    erc20,
+    "0x3702E3e2DB2b5d037c1dbB23Ab7A51d0Cc90BD0e"
+  );
+  dayBalance.SPAStakingArbitrum = balance.SPAStakingArbitrum;
   balance.totalBalances = balance.bootstrapLiquidityDeployer
     .plus(balance.usdsUsdcFarmRewarder)
     .plus(balance.usdsUsdcFarmVesting)
@@ -164,7 +176,9 @@ export function handleTransfer(event: Transfer): void {
     .plus(balance.spaFarm)
     .plus(balance.rewardDistributor)
     .plus(balance.spaBuyback)
-    .plus(balance.veSPAL2);
+    .plus(balance.veSPAL2)
+    .plus(balance.SPABootstrapedLDArb)
+    .plus(balance.SPAStakingArbitrum);
   dayBalance.totalBalances = balance.totalBalances;
 
   // Balances Entities

@@ -26,10 +26,12 @@ type spaL2Balance @entity {
   spaReserveL2MultiSig: BigDecimal!
   spaFarm: BigDecimal!
   spaFarmRewarder: BigDecimal!
-  rewardDistributor:BigDecimal!
-  spaBuyback:BigDecimal!
-  veSPAL2:BigDecimal!
-  totalBalances:BigDecimal!
+  rewardDistributor: BigDecimal!
+  spaBuyback: BigDecimal!
+  veSPAL2: BigDecimal!
+  SPABootstrapedLDArb: BigDecimal!
+  SPAStakingArbitrum: BigDecimal!
+  totalBalances: BigDecimal!
   timeStamp: String!
   timeStampUnix: BigInt!
   blockNumber: BigInt!
@@ -61,10 +63,12 @@ type spaL2DayBalance @entity {
   spaReserveL2MultiSig: BigDecimal!
   spaFarm: BigDecimal!
   spaFarmRewarder: BigDecimal!
-  rewardDistributor:BigDecimal!
-  spaBuyback:BigDecimal!
-  veSPAL2:BigDecimal!
-  totalBalances:BigDecimal!
+  rewardDistributor: BigDecimal!
+  spaBuyback: BigDecimal!
+  veSPAL2: BigDecimal!
+  SPABootstrapedLDArb: BigDecimal!
+  SPAStakingArbitrum: BigDecimal!
+  totalBalances: BigDecimal!
   timeStamp: String!
   timeStampUnix: BigInt!
   blockNumber: BigInt!
@@ -79,7 +83,7 @@ type spaL2TotalSupplyDayEvent @entity {
   timeStampUnix: BigInt!
   blockNumber: BigInt!
   transactionHash: Bytes!
-}#--------------------------SPA-L2-Farm-----------------------------
+} #--------------------------SPA-L2-Farm-----------------------------
 type spaL2FarmStakeEvent @entity {
   id: ID!
   account: Bytes!
@@ -87,7 +91,7 @@ type spaL2FarmStakeEvent @entity {
   totalStakedSPA: BigDecimal!
   count: BigInt!
   expiryDate: BigInt!
-  lockupPeriod:BigInt!
+  lockupPeriod: BigInt!
   gasPrice: BigInt!
   gasUsed: BigInt!
   timeStamp: String!

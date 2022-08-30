@@ -142,18 +142,18 @@ export function handleTransfer(event: Transfer): void {
   dayBalance.rewardDistributor = balance.rewardDistributor;
   // 10 foundation2
 
-  balance.foundation2 = spaL1BalanceCheck(
+  balance.amber1 = spaL1BalanceCheck(
     erc20,
     "0x28c29E7db4aAA465259D17c4D49b283873308cAb"
   );
-  dayBalance.foundation2 = balance.foundation2;
+  dayBalance.amber1 = balance.amber1;
   // 11 wallet From Tresaury
 
-  balance.walletFromTresaury = spaL1BalanceCheck(
+  balance.amber2 = spaL1BalanceCheck(
     erc20,
     "0xb3186f799ec434eecbfd811468139efa9e37c134"
   );
-  dayBalance.walletFromTresaury = balance.walletFromTresaury;
+  dayBalance.amber2 = balance.amber2;
   // 12 veSPA L1
 
   balance.veSPAL1 = spaL1BalanceCheck(
@@ -161,6 +161,13 @@ export function handleTransfer(event: Transfer): void {
     "0xbF82a3212e13b2d407D10f5107b5C8404dE7F403"
   );
   dayBalance.veSPAL1 = balance.veSPAL1;
+  // 13 foundation 3
+
+  balance.foundation3 = spaL1BalanceCheck(
+    erc20,
+    "0xC6e00e0E3544C93460cdFb53E85C4528EF348265"
+  );
+  dayBalance.foundation3 = balance.foundation3;
   // Total SPA L1 Balances
   balance.totalBalancesL1 = balance.bootstrapLiquidityDeployer
     .plus(balance.bootstrapLiquidity)
@@ -171,9 +178,8 @@ export function handleTransfer(event: Transfer): void {
     .plus(balance.treasury)
     .plus(balance.teamAdvisor2)
     .plus(balance.rewardDistributor)
-    .plus(balance.foundation2)
-    .plus(balance.walletFromTresaury)
-    .plus(balance.veSPAL1);
+    .plus(balance.veSPAL1)
+    .plus(balance.foundation3);
   dayBalance.totalBalancesL1 = balance.totalBalancesL1;
 
   //Transfer Entities

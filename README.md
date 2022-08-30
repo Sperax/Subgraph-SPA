@@ -1,5 +1,5 @@
 # SPA L1/L2 Subgraph
-This subgraph Contains the following sections:
+This repo Contains the following sections:
 - SPA/wSPA ETH L1 Analytics.
 - SPA Arbitrum L2 Analytics.
 - SPA Arbitrum L2 Farm
