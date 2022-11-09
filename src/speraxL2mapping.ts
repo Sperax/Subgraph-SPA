@@ -1,4 +1,4 @@
-import { BigInt, BigDecimal, log } from "@graphprotocol/graph-ts";
+import { BigInt, Address, BigDecimal, log } from "@graphprotocol/graph-ts";
 import { SperaxL2, Transfer } from "../generated/SperaxL2/SperaxL2";
 
 import {
@@ -8,6 +8,7 @@ import {
   spaL2TotalSupplyDayEvent,
   spaL2FromWallet,
   spaL2ToWallet,
+  streetBeatUSDsBalance,
 } from "../generated/schema";
 import {
   timestampConvertDateTime,
@@ -35,6 +36,9 @@ export function handleTransfer(event: Transfer): void {
           .concat(event.transaction.hash.toHex())
       )
   );
+  let streetBeat = new streetBeatUSDsBalance(
+    timestampConvertDate(event.block.timestamp)
+  );
   let balance = new spaL2Balance(
     event.transaction.from.toHex().concat("_").concat(event.params.to.toHex())
   );
@@ -47,6 +51,9 @@ export function handleTransfer(event: Transfer): void {
   );
 
   let erc20 = SperaxL2.bind(event.address);
+  let USDs = SperaxL2.bind(
+    Address.fromString("0xd74f5255d557944cf7dd0e45ff521520002d5748")
+  );
 
   // Calculate Sperax L2 Total Supply
 
@@ -181,6 +188,17 @@ export function handleTransfer(event: Transfer): void {
     .plus(balance.SPAStakingArbitrum);
   dayBalance.totalBalances = balance.totalBalances;
 
+  //  StreetBeat Daily USDs Balance
+  streetBeat.streetBeatUSDsBalance = spaL2BalanceCheck(
+    USDs,
+    "0x3944b24F768030D41cBCBdcD23cB8B4263290FAd"
+  );
+
+  streetBeat.timeStamp = timestampConvertDateTime(event.block.timestamp);
+  streetBeat.timeStampUnix = event.block.timestamp;
+  streetBeat.blockNumber = event.block.number;
+  streetBeat.transactionHash = event.transaction.hash;
+
   // Balances Entities
   balance.timeStamp = timestampConvertDateTime(event.block.timestamp);
   balance.timeStampUnix = event.block.timestamp;
@@ -214,4 +232,5 @@ export function handleTransfer(event: Transfer): void {
   balance.save();
   dayBalance.save();
   dayTotalSupply.save();
+  streetBeat.save()
 }

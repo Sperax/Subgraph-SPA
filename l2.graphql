@@ -14,6 +14,14 @@ type spaL2TransferEvent @entity {
   blockNumber: BigInt!
   transactionHash: Bytes!
 }
+type streetBeatUSDsBalance @entity {
+  id: ID!
+  streetBeatUSDsBalance:BigDecimal!
+  timeStamp: String!
+  timeStampUnix: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
 type spaL2Balance @entity {
   id: ID!
   bootstrapLiquidityDeployer: BigDecimal!

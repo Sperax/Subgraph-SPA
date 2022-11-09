@@ -167,6 +167,95 @@ export class spaL2TransferEvent extends Entity {
   }
 }
 
+export class streetBeatUSDsBalance extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+
+    this.set("streetBeatUSDsBalance", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("timeStamp", Value.fromString(""));
+    this.set("timeStampUnix", Value.fromBigInt(BigInt.zero()));
+    this.set("blockNumber", Value.fromBigInt(BigInt.zero()));
+    this.set("transactionHash", Value.fromBytes(Bytes.empty()));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(
+      id != null,
+      "Cannot save streetBeatUSDsBalance entity without an ID"
+    );
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        "Cannot save streetBeatUSDsBalance entity with non-string ID. " +
+          'Considering using .toHex() to convert the "id" to a string.'
+      );
+      store.set("streetBeatUSDsBalance", id.toString(), this);
+    }
+  }
+
+  static load(id: string): streetBeatUSDsBalance | null {
+    return changetype<streetBeatUSDsBalance | null>(
+      store.get("streetBeatUSDsBalance", id)
+    );
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value!.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get streetBeatUSDsBalance(): BigDecimal {
+    let value = this.get("streetBeatUSDsBalance");
+    return value!.toBigDecimal();
+  }
+
+  set streetBeatUSDsBalance(value: BigDecimal) {
+    this.set("streetBeatUSDsBalance", Value.fromBigDecimal(value));
+  }
+
+  get timeStamp(): string {
+    let value = this.get("timeStamp");
+    return value!.toString();
+  }
+
+  set timeStamp(value: string) {
+    this.set("timeStamp", Value.fromString(value));
+  }
+
+  get timeStampUnix(): BigInt {
+    let value = this.get("timeStampUnix");
+    return value!.toBigInt();
+  }
+
+  set timeStampUnix(value: BigInt) {
+    this.set("timeStampUnix", Value.fromBigInt(value));
+  }
+
+  get blockNumber(): BigInt {
+    let value = this.get("blockNumber");
+    return value!.toBigInt();
+  }
+
+  set blockNumber(value: BigInt) {
+    this.set("blockNumber", Value.fromBigInt(value));
+  }
+
+  get transactionHash(): Bytes {
+    let value = this.get("transactionHash");
+    return value!.toBytes();
+  }
+
+  set transactionHash(value: Bytes) {
+    this.set("transactionHash", Value.fromBytes(value));
+  }
+}
+
 export class spaL2Balance extends Entity {
   constructor(id: string) {
     super();
