@@ -279,6 +279,7 @@ export class spaL2Balance extends Entity {
     this.set("veSPAL2", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("SPABootstrapedLDArb", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("SPAStakingArbitrum", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("teamTokenManager", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("totalBalances", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("timeStamp", Value.fromString(""));
     this.set("timeStampUnix", Value.fromBigInt(BigInt.zero()));
@@ -445,6 +446,15 @@ export class spaL2Balance extends Entity {
 
   set SPAStakingArbitrum(value: BigDecimal) {
     this.set("SPAStakingArbitrum", Value.fromBigDecimal(value));
+  }
+
+  get teamTokenManager(): BigDecimal {
+    let value = this.get("teamTokenManager");
+    return value!.toBigDecimal();
+  }
+
+  set teamTokenManager(value: BigDecimal) {
+    this.set("teamTokenManager", Value.fromBigDecimal(value));
   }
 
   get totalBalances(): BigDecimal {
@@ -644,6 +654,7 @@ export class spaL2DayBalance extends Entity {
     this.set("veSPAL2", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("SPABootstrapedLDArb", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("SPAStakingArbitrum", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("teamTokenManager", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("totalBalances", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("timeStamp", Value.fromString(""));
     this.set("timeStampUnix", Value.fromBigInt(BigInt.zero()));
@@ -810,6 +821,15 @@ export class spaL2DayBalance extends Entity {
 
   set SPAStakingArbitrum(value: BigDecimal) {
     this.set("SPAStakingArbitrum", Value.fromBigDecimal(value));
+  }
+
+  get teamTokenManager(): BigDecimal {
+    let value = this.get("teamTokenManager");
+    return value!.toBigDecimal();
+  }
+
+  set teamTokenManager(value: BigDecimal) {
+    this.set("teamTokenManager", Value.fromBigDecimal(value));
   }
 
   get totalBalances(): BigDecimal {

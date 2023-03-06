@@ -171,6 +171,13 @@ export function handleTransfer(event: Transfer): void {
     "0x3702E3e2DB2b5d037c1dbB23Ab7A51d0Cc90BD0e"
   );
   dayBalance.SPAStakingArbitrum = balance.SPAStakingArbitrum;
+
+  // 16- Team Token Manager
+  balance.teamTokenManager = spaL2BalanceCheck(
+    erc20,
+    "0xE10b88d70b01b956782Dc98d7D4f3a931FF59Fc7"
+  );
+  dayBalance.teamTokenManager = balance.teamTokenManager;
   balance.totalBalances = balance.bootstrapLiquidityDeployer
     .plus(balance.usdsUsdcFarmRewarder)
     .plus(balance.usdsUsdcFarmVesting)
@@ -185,7 +192,8 @@ export function handleTransfer(event: Transfer): void {
     .plus(balance.spaBuyback)
     .plus(balance.veSPAL2)
     .plus(balance.SPABootstrapedLDArb)
-    .plus(balance.SPAStakingArbitrum);
+    .plus(balance.SPAStakingArbitrum)
+    .plus(balance.teamTokenManager);
   dayBalance.totalBalances = balance.totalBalances;
 
   //  StreetBeat Daily USDs Balance
@@ -232,5 +240,5 @@ export function handleTransfer(event: Transfer): void {
   balance.save();
   dayBalance.save();
   dayTotalSupply.save();
-  streetBeat.save()
+  streetBeat.save();
 }

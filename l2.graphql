@@ -39,6 +39,7 @@ type spaL2Balance @entity {
   veSPAL2: BigDecimal!
   SPABootstrapedLDArb: BigDecimal!
   SPAStakingArbitrum: BigDecimal!
+  teamTokenManager:BigDecimal!
   totalBalances: BigDecimal!
   timeStamp: String!
   timeStampUnix: BigInt!
@@ -76,6 +77,7 @@ type spaL2DayBalance @entity {
   veSPAL2: BigDecimal!
   SPABootstrapedLDArb: BigDecimal!
   SPAStakingArbitrum: BigDecimal!
+  teamTokenManager:BigDecimal!
   totalBalances: BigDecimal!
   timeStamp: String!
   timeStampUnix: BigInt!
