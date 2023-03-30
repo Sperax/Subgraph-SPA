@@ -40,6 +40,8 @@ type spaL2Balance @entity {
   SPABootstrapedLDArb: BigDecimal!
   SPAStakingArbitrum: BigDecimal!
   teamTokenManager:BigDecimal!
+  newTeamWallet:BigDecimal!
+  newL1L2Treasury:BigDecimal!
   totalBalances: BigDecimal!
   timeStamp: String!
   timeStampUnix: BigInt!
@@ -78,6 +80,8 @@ type spaL2DayBalance @entity {
   SPABootstrapedLDArb: BigDecimal!
   SPAStakingArbitrum: BigDecimal!
   teamTokenManager:BigDecimal!
+  newTeamWallet:BigDecimal!
+  newL1L2Treasury:BigDecimal!
   totalBalances: BigDecimal!
   timeStamp: String!
   timeStampUnix: BigInt!

@@ -178,6 +178,21 @@ export function handleTransfer(event: Transfer): void {
     "0xE10b88d70b01b956782Dc98d7D4f3a931FF59Fc7"
   );
   dayBalance.teamTokenManager = balance.teamTokenManager;
+
+  // 17- new Team Wallet
+  balance.newTeamWallet = spaL2BalanceCheck(
+    erc20,
+    "0xE10b88d70b01b956782Dc98d7D4f3a931FF59Fc7"
+  );
+  dayBalance.newTeamWallet = balance.newTeamWallet;
+
+  // 18- New-L1->L2-Treasury
+  balance.newL1L2Treasury = spaL2BalanceCheck(
+    erc20,
+    "0xBA6ca0B9e7333f5e667816b85704c024AB250C9D"
+  );
+  dayBalance.newL1L2Treasury = balance.newL1L2Treasury;
+
   balance.totalBalances = balance.bootstrapLiquidityDeployer
     .plus(balance.usdsUsdcFarmRewarder)
     .plus(balance.usdsUsdcFarmVesting)
@@ -193,7 +208,9 @@ export function handleTransfer(event: Transfer): void {
     .plus(balance.veSPAL2)
     .plus(balance.SPABootstrapedLDArb)
     .plus(balance.SPAStakingArbitrum)
-    .plus(balance.teamTokenManager);
+    .plus(balance.teamTokenManager)
+    .plus(balance.newTeamWallet)
+    .plus(balance.newL1L2Treasury);
   dayBalance.totalBalances = balance.totalBalances;
 
   //  StreetBeat Daily USDs Balance

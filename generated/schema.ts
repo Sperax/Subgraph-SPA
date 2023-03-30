@@ -280,6 +280,8 @@ export class spaL2Balance extends Entity {
     this.set("SPABootstrapedLDArb", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("SPAStakingArbitrum", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("teamTokenManager", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("newTeamWallet", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("newL1L2Treasury", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("totalBalances", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("timeStamp", Value.fromString(""));
     this.set("timeStampUnix", Value.fromBigInt(BigInt.zero()));
@@ -455,6 +457,24 @@ export class spaL2Balance extends Entity {
 
   set teamTokenManager(value: BigDecimal) {
     this.set("teamTokenManager", Value.fromBigDecimal(value));
+  }
+
+  get newTeamWallet(): BigDecimal {
+    let value = this.get("newTeamWallet");
+    return value!.toBigDecimal();
+  }
+
+  set newTeamWallet(value: BigDecimal) {
+    this.set("newTeamWallet", Value.fromBigDecimal(value));
+  }
+
+  get newL1L2Treasury(): BigDecimal {
+    let value = this.get("newL1L2Treasury");
+    return value!.toBigDecimal();
+  }
+
+  set newL1L2Treasury(value: BigDecimal) {
+    this.set("newL1L2Treasury", Value.fromBigDecimal(value));
   }
 
   get totalBalances(): BigDecimal {
@@ -655,6 +675,8 @@ export class spaL2DayBalance extends Entity {
     this.set("SPABootstrapedLDArb", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("SPAStakingArbitrum", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("teamTokenManager", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("newTeamWallet", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("newL1L2Treasury", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("totalBalances", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("timeStamp", Value.fromString(""));
     this.set("timeStampUnix", Value.fromBigInt(BigInt.zero()));
@@ -830,6 +852,24 @@ export class spaL2DayBalance extends Entity {
 
   set teamTokenManager(value: BigDecimal) {
     this.set("teamTokenManager", Value.fromBigDecimal(value));
+  }
+
+  get newTeamWallet(): BigDecimal {
+    let value = this.get("newTeamWallet");
+    return value!.toBigDecimal();
+  }
+
+  set newTeamWallet(value: BigDecimal) {
+    this.set("newTeamWallet", Value.fromBigDecimal(value));
+  }
+
+  get newL1L2Treasury(): BigDecimal {
+    let value = this.get("newL1L2Treasury");
+    return value!.toBigDecimal();
+  }
+
+  set newL1L2Treasury(value: BigDecimal) {
+    this.set("newL1L2Treasury", Value.fromBigDecimal(value));
   }
 
   get totalBalances(): BigDecimal {
