@@ -18,23 +18,19 @@ import {
 } from "../src/utilis/utils";
 
 export function handleTransfer(event: Transfer): void {
-  let fromWallet = new spaL2FromWallet(event.params.from.toHex());
+  let fromWallet = new spaL2FromWallet(
+    event.transaction.hash.toHex().concat("_").concat(event.logIndex.toString())
+  );
   fromWallet.blockNumber = event.block.number;
-  let toWallet = new spaL2ToWallet(event.params.from.toHex());
+  let toWallet = new spaL2ToWallet(
+    event.transaction.hash.toHex().concat("_").concat(event.logIndex.toString())
+  );
   toWallet.blockNumber = event.block.number;
 
   fromWallet.save();
   toWallet.save();
   let entity = new spaL2TransferEvent(
-    event.transaction.from
-      .toHex()
-      .concat("_")
-      .concat(
-        event.params.to
-          .toHex()
-          .concat("_")
-          .concat(event.transaction.hash.toHex())
-      )
+    event.transaction.hash.toHex().concat("_").concat(event.logIndex.toString())
   );
   let streetBeat = new streetBeatUSDsBalance(
     timestampConvertDate(event.block.timestamp)

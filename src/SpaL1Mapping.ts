@@ -18,36 +18,20 @@ import {
 
 export function handleTransfer(event: Transfer): void {
   // Initialize Entities
-  let fromWallet = new spaL1FromWallet(event.params.from.toHex());
+  let fromWallet = new spaL1FromWallet( event.transaction.hash.toHex().concat("_").concat(event.logIndex.toString()));
   fromWallet.blockNumber = event.block.number;
-  let toWallet = new spaL1ToWallet(event.params.from.toHex());
+  let toWallet = new spaL1ToWallet( event.transaction.hash.toHex().concat("_").concat(event.logIndex.toString()));
   toWallet.blockNumber = event.block.number;
 
   fromWallet.save();
   toWallet.save();
 
   let transfer = new spaL1TransferEvent(
-    event.transaction.from
-      .toHex()
-      .concat("_")
-      .concat(
-        event.params.to
-          .toHex()
-          .concat("_")
-          .concat(event.transaction.hash.toHex())
-      )
+    event.transaction.hash.toHex().concat("_").concat(event.logIndex.toString())
   );
 
   let balance = new spaL1Balance(
-    event.transaction.from
-      .toHex()
-      .concat("_")
-      .concat(
-        event.params.to
-          .toHex()
-          .concat("_")
-          .concat(event.transaction.hash.toHex())
-      )
+    event.transaction.hash.toHex().concat("_").concat(event.logIndex.toString())
   );
   let spaL1TotalSupply = new spaL1TotalSupplyEvent(
     event.transaction.from.toHex()
