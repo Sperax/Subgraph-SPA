@@ -8,6 +8,7 @@ import {
   spaL1TotalSupplyDayEvent,
   spaL1FromWallet,
   spaL1ToWallet,
+  spaL1DayTransferEvent,
 } from "../generated/schema";
 
 import {
@@ -25,6 +26,21 @@ export function handleTransfer(event: Transfer): void {
 
   fromWallet.save();
   toWallet.save();
+
+
+  let transferDay = spaL1DayTransferEvent.load(
+    timestampConvertDate(event.block.timestamp)
+  );
+
+  if (!transferDay) {
+    transferDay = new spaL1DayTransferEvent(
+      timestampConvertDate(event.block.timestamp)
+    );
+
+    // Entity fields can be set using simple assignments
+    transferDay.count = BigInt.fromI32(0);
+    transferDay.value = BigDecimal.fromString("0");
+  }
 
   let transfer = new spaL1TransferEvent(
     event.transaction.hash.toHex().concat("_").concat(event.logIndex.toString())
@@ -207,10 +223,18 @@ export function handleTransfer(event: Transfer): void {
   dayBalance.blockNumber = event.block.number;
   dayBalance.transactionHash = event.transaction.hash;
 
+  transferDay.count = transferDay.count.plus(BigInt.fromI32(1));
+  transferDay.value = transferDay.value.plus(transfer.value);
+  transferDay.timeStamp = timestampConvertDateTime(event.block.timestamp);
+  transferDay.timeStampUnix = event.block.timestamp;
+  transferDay.blockNumber = event.block.number;
+  transferDay.transactionHash = event.transaction.hash;
+
   // Saving Entities
   transfer.save();
   dayTotalSupply.save();
   spaL1TotalSupply.save();
   balance.save();
   dayBalance.save();
+  transferDay.save()
 }
